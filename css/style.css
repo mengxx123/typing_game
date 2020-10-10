@@ -1,0 +1,52 @@
+body {
+    font-size: 2.5rem;
+    background-color: rgb(150, 150, 150);
+}
+
+.wrap,
+main {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+header {
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: dashed 2px white;
+    background-color: rgb(10, 77, 99);
+    position: relative;
+}
+.btn_box {
+    position: absolute;
+}
+.retry_btn,
+.pause_btn {
+    font-size: 1.5rem;
+    color: white;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 2px black;
+    background-color: blue;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.game_title {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.status_box {
+    margin: 20px auto;
+    border-radius: 10px;
+    border: solid 1px black;
+    background-color: cadetblue;
+}
+.type_count_box {
+text-align: end;
+}
+.correct_type_count,
+.wrong_type_count {
+    display: inline-block;
+}
+
