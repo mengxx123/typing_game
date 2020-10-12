@@ -107,6 +107,10 @@ footer {
 .space_key {
     width: 200px;
 }
+.key_board p.enter {
+    background-color: tomato;
+}
+
 footer {
     text-align: center;
     font-size: 1.2rem;
