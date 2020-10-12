@@ -15,12 +15,12 @@ footer {
     color: white;
     width: 100%;
     padding: 20px 0;
-    border-bottom: dashed 2px black;
+    border-bottom: solid 5px black;
     background-color: teal;
     position: relative;
 }
 footer {
-    border-top: dashed 2px black;
+    border-top: solid 5px black;
 }
 .btn_box {
     position: absolute;
@@ -46,7 +46,7 @@ footer {
     padding-bottom: 10px;
     margin: 20px auto;
     border-radius: 10px;
-    border: solid 1px black;
+    border: solid 3px black;
     background-color: cadetblue;
 }
 .type_count_box {
@@ -68,23 +68,27 @@ footer {
 }
 
 .ploblem_word_box {
+    min-height: 150px;
     padding: 10px;
-    border: solid 1px white;
+    border: solid 3px black;
     border-radius: 10px;
     text-align: center;
     background-color: teal;
 }
+.jp_word {
+    font-size: 2.8rem;
+    line-height: 75px;
+}
 .en_word {
-    font-size: 2rem;
-    padding: 10px;
+    font-size: 2.3rem;
 }
 
 .key_board_box {
     padding: 20px;
     margin: 50px auto;
-    border: solid 1px white;
+    border: solid 3px black;
     border-radius: 10px;
-    background-color: rgb(80, 80, 80);
+    background-color: rgb(150, 150, 150);
 }
 .key_board {
     text-align: center;
