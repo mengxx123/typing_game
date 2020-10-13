@@ -37,6 +37,10 @@ footer {
     vertical-align: middle;
     cursor: pointer;
 }
+.retry_btn:hover,
+.pause_btn:hover {
+    background-color: rgb(65, 65, 190);
+}
 .game_title {
     font-size: 3rem;
     text-align: center;

@@ -8,33 +8,33 @@ function messageChanger(target, message) {
     target.innerText = message;
 }
 
-let upKey;
-let upKeyCode;
-
-window.addEventListener("keyup", (event) => {
-    upKey = event.key;
-    upKeyCode = event.code;
-    console.log(upKeyCode);
-});
-
 const keyboardArray = document.querySelectorAll(".key_board_box p");
-let keyArray = [];
-function setKeyArray() {
-    let tmpArray = [];
-    keyboardArray.forEach(Element => {
-        tmpArray.push(Element.innerText);
-    });
-    return tmpArray;
-}
-keyArray = setKeyArray();
-console.log(keyArray);
 
 let timerIntervalId;
 
+let downKey;
+let downKeyCode;
+let upKey;
+let upKeyCode;
+
 window.addEventListener("keydown", (event) => {
-    const downKey = event.key.toUpperCase();
-    const downKeyCode = event.code;
-    if (downKeyCode == "Space" ) {
+    downKey = event.key.toUpperCase();
+    downKeyCode = event.code;
+    downKeyManager();
+    if (!isGameStarted && downKeyCode == "Space" ) {
+        isGameStarted = true;
+        timerIntervalId = setInterval(readyMessageChanger, 1000);
+        }
+});
+
+window.addEventListener("keyup", (event) => {
+    upKey = event.key.toUpperCase();
+    upKeyCode = event.code;
+    upKeyManager();
+});
+
+function downKeyManager() {
+    if (downKey == " " ) {
         keyboardArray[keyboardArray.length - 1].classList.add("enter");
     }
     else {
@@ -44,17 +44,23 @@ window.addEventListener("keydown", (event) => {
             }
         });
     }
-    if (!isGameStarted && downKeyCode == "Space" ) {
-        isGameStarted = true;
-        timerIntervalId = setInterval(readyMessageChanger, 1000);
-        }
-});
-
-function timerManager() {
-    timerIntervalId = setInterval(gameTimer, 10);
 }
 
-let leaveTime = 500;
+function upKeyManager() {
+    if (upKey == " " ) {
+        keyboardArray[keyboardArray.length - 1].classList.remove("enter");
+    }
+    else {
+        keyboardArray.forEach(Element => {
+            if (upKey == Element.innerText) {
+                Element.classList.remove("enter");
+            }
+        });
+    }
+}
+
+const gameTime = 34000;
+let leaveTime = gameTime;
 const timeCount = document.querySelector(".timer");
 
 function gameTimer() {
@@ -67,6 +73,10 @@ function gameTimer() {
         clearInterval(timerIntervalId);
         setTimeout(gameReset, 1000);
     }
+}
+
+function gameStart() {
+    timerIntervalId = setInterval(gameTimer, 10);
 }
 
 const readyMessageArray = ["3", "2", "1", "開始！"]
@@ -83,18 +93,36 @@ function readyMessageChanger() {
     }
 }
 
-function gameStart() {
-    timerManager();
-}
-
 let isGameStarted = Boolean;
 
 function gameReset() {
     isGameStarted = false;
     readyMessageIndex = 0;
-    leaveTime = 500;
+    leaveTime = gameTime;
     messageChanger(timeCount, leaveTime);
     messageChanger(jpWord, jpMessageArray[0]);
     messageChanger(enWord, enMessageArray[0]);
 }
 gameReset();
+
+let minTime;
+let secTime;
+let decTime;
+
+function timeFormater() {
+    const a = leaveTime.toString().substr(-2, );
+    console.log(a);
+    const tmpMinTime = Math.floor(leaveTime / 60);
+    const tmpSecTime = leaveTime % 60;
+    const tmpDecTime = leaveTime.toString().substr(3, 2);
+    const formatMinTime = tmpMinTime.toString();
+    const formatSecTime = tmpSecTime.toString();
+    const formatDecTime = tmpDecTime.toString();
+    minTime = formatMinTime.substr(0, 1);
+    secTime = formatSecTime;
+    decTime = formatDecTime;
+    let formatTime = minTime + ":" + secTime + ":" + decTime;
+    console.log(formatTime);
+    return formatTime
+}
+timeFormater();
