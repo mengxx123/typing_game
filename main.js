@@ -59,14 +59,14 @@ function upKeyManager() {
     }
 }
 
-const gameTime = 34000;
+const gameTime = 6000;
 let leaveTime = gameTime;
 const timeCount = document.querySelector(".timer");
 
 function gameTimer() {
     leaveTime -= 1;
     console.log(leaveTime);
-    messageChanger(timeCount, leaveTime);
+    messageChanger(timeCount, timeFormater());
     if (leaveTime == 0) {
         messageChanger(jpWord, jpMessageArray[2]);
         messageChanger(enWord, enMessageArray[2]);
@@ -112,11 +112,11 @@ let decTime;
 function timeFormater() {
     const a = leaveTime.toString().substr(-2, );
     console.log(a);
-    const tmpMinTime = Math.floor(leaveTime / 60);
-    const tmpSecTime = leaveTime % 60;
+    const tmpMinTime = Math.floor(leaveTime / 6000);
+    const tmpSecTime = leaveTime % 6000;
     const tmpDecTime = leaveTime.toString().substr(3, 2);
     const formatMinTime = tmpMinTime.toString();
-    const formatSecTime = tmpSecTime.toString();
+    const formatSecTime = tmpSecTime.toString().substr(0, 2);
     const formatDecTime = tmpDecTime.toString();
     minTime = formatMinTime.substr(0, 1);
     secTime = formatSecTime;
