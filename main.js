@@ -59,7 +59,7 @@ function upKeyManager() {
     }
 }
 
-const gameTime = 6000;
+const gameTime = 18000;
 let leaveTime = gameTime;
 const timeCount = document.querySelector(".timer");
 
@@ -93,18 +93,6 @@ function readyMessageChanger() {
     }
 }
 
-let isGameStarted = Boolean;
-
-function gameReset() {
-    isGameStarted = false;
-    readyMessageIndex = 0;
-    leaveTime = gameTime;
-    messageChanger(timeCount, leaveTime);
-    messageChanger(jpWord, jpMessageArray[0]);
-    messageChanger(enWord, enMessageArray[0]);
-}
-gameReset();
-
 let minTime;
 let secTime;
 let decTime;
@@ -114,9 +102,9 @@ function timeFormater() {
     console.log(a);
     const tmpMinTime = Math.floor(leaveTime / 6000);
     const tmpSecTime = leaveTime % 6000;
-    const tmpDecTime = leaveTime.toString().substr(3, 2);
+    const tmpDecTime = leaveTime.toString().padStart(5, "0").substr(3, 2);
     const formatMinTime = tmpMinTime.toString();
-    const formatSecTime = tmpSecTime.toString().substr(0, 2);
+    const formatSecTime = tmpSecTime.toString().padStart(4, "0").substr(0, 2);
     const formatDecTime = tmpDecTime.toString();
     minTime = formatMinTime.substr(0, 1);
     secTime = formatSecTime;
@@ -125,4 +113,15 @@ function timeFormater() {
     console.log(formatTime);
     return formatTime
 }
-timeFormater();
+
+let isGameStarted = Boolean;
+
+function gameReset() {
+    isGameStarted = false;
+    readyMessageIndex = 0;
+    leaveTime = gameTime;
+    messageChanger(timeCount, timeFormater());
+    messageChanger(jpWord, jpMessageArray[0]);
+    messageChanger(enWord, enMessageArray[0]);
+}
+gameReset();
