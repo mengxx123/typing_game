@@ -87,6 +87,10 @@ footer {
 .en_word {
     font-size: 2.3rem;
 }
+.typed {
+    color: rgb(80, 80, 220);
+    text-shadow: 0 0 3px white;
+}
 
 .key_board_box {
     padding: 20px;
