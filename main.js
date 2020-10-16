@@ -25,7 +25,6 @@ window.addEventListener("keydown", (event) => {
     downKeyManager();
     if (!isGameStarted && timerIntervalId == null && downKeyCode == "Space" ) {
         timerIntervalId = setInterval(readyMessageChanger, 1000);
-        console.log(timerIntervalId);
         }
 });
 
@@ -85,7 +84,6 @@ function typeJuge(typeKey) {
     else {
         wrongPoint += 1;
         wrongPointBox.innerText = wrongPoint.toString().padStart(2, "0");
-        console.log(wrongPoint);
     }
 }
 
@@ -100,12 +98,12 @@ function gameTimer() {
         messageChanger(jpWord, jpMessageArray[2]);
         messageChanger(enWord, enMessageArray[2]);
         clearInterval(timerIntervalId);
-        timerIntervalId = null;
         setTimeout(gameReset, 1000);
     }
 }
 
 function gameStart() {
+    clearInterval(timerIntervalId);
     isGameStarted = true;
     ploblemSet();
     timerIntervalId = setInterval(function() {
@@ -126,8 +124,6 @@ function readyMessageChanger() {
     messageChanger(enWord, enWord.innerText + ".");
     readyMessageIndex += 1;
     if (readyMessageIndex == readyMessageArray.length) {
-        clearInterval(timerIntervalId);
-        timerIntervalId = null;
         messageChanger(enWord, "Start!");
         setTimeout(gameStart, 1000);
         readyMessageIndex = 0;
@@ -155,7 +151,6 @@ function timeFormater() {
 function gameReset() {
     isGameStarted = false;
     clearInterval(timerIntervalId);
-    timerIntervalId = null;
     readyMessageIndex = 0;
     correctPoint = 0;
     correctPointBox.innerText = "00";
@@ -182,7 +177,6 @@ pauseBtn.addEventListener("click", function () {
         typedTmp = "";
         typedWord.innerText = ""; 
         clearInterval(timerIntervalId);
-        timerIntervalId = null;
         messageChanger(jpWord, jpMessageArray[1]);
         messageChanger(enWord, enMessageArray[1]);
     }   
